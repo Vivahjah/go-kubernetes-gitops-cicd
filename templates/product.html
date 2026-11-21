@@ -1,0 +1,13 @@
+{{define "content"}}
+<section class="wrap detail">
+  <div class="swatch big" style="background:{{.Color}}"></div>
+  <div>
+    <small>{{.Category}}</small>
+    <h1>{{.Name}}</h1>
+    <p class="price">{{.PriceString}}</p>
+    <p>{{.Description}}</p>
+    <a class="btn" href="/enquiries">Enquire to buy</a>
+    <p><a href="/shop">← Back to shop</a></p>
+  </div>
+</section>
+{{end}}

@@ -1,0 +1,23 @@
+{{define "content"}}
+<section class="hero">
+  <h1>Pottery made to be used every day.</h1>
+  <p>Small-batch stoneware, thrown by hand and glazed in earthy colours.</p>
+  <a class="btn" href="/shop">Browse the collection</a>
+</section>
+<section class="wrap">
+  <h2>Featured pieces</h2>
+  <div class="grid">
+  {{range .}}
+    <a class="card" href="/shop/{{.ID}}">
+      <div class="swatch" style="background:{{.Color}}"></div>
+      <h3>{{.Name}}</h3><span>{{.PriceString}}</span>
+    </a>
+  {{end}}
+  </div>
+</section>
+<section class="strip">
+  <div><strong>Handmade</strong><p>Every piece is thrown and glazed by hand.</p></div>
+  <div><strong>Food safe</strong><p>Lead-free glazes, dishwasher friendly.</p></div>
+  <div><strong>Small batch</strong><p>Limited runs, never mass produced.</p></div>
+</section>
+{{end}}

@@ -1,0 +1,14 @@
+{{define "content"}}
+<section class="wrap">
+  <h1>The collection</h1>
+  <div class="grid">
+  {{range .}}
+    <a class="card" href="/shop/{{.ID}}">
+      <div class="swatch" style="background:{{.Color}}"></div>
+      <small>{{.Category}}</small>
+      <h3>{{.Name}}</h3><span>{{.PriceString}}</span>
+    </a>
+  {{end}}
+  </div>
+</section>
+{{end}}
