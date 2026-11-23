@@ -67,16 +67,34 @@ func storyPage(w http.ResponseWriter, r *http.Request) {
 	render(w, "story", "Our story", nil)
 }
 
+
 func enquiriesPage(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		r.ParseForm()
+		if err := r.ParseForm(); err != nil {
+			http.Error(w, "Unable to process enquiry form", http.StatusBadRequest)
+			return
+		}
+
 		name := strings.TrimSpace(r.FormValue("name"))
-		log.Printf("enquiry from %q <%s>: %s", name, r.FormValue("email"), r.FormValue("message"))
-		render(w, "enquiries", "Enquiries", map[string]any{"Sent": true, "Name": name})
+
+		log.Printf("enquiry from %q <%s>: %s",
+			name,
+			r.FormValue("email"),
+			r.FormValue("message"),
+		)
+
+		render(w, "enquiries", "Enquiries", map[string]any{
+			"Sent": true,
+			"Name": name,
+		})
 		return
 	}
-	render(w, "enquiries", "Enquiries", map[string]any{"Sent": false})
+
+	render(w, "enquiries", "Enquiries", map[string]any{
+		"Sent": false,
+	})
 }
+
 
 func main() {
 	mux := http.NewServeMux()
