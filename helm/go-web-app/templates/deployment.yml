@@ -1,3 +1,4 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -13,16 +14,16 @@ spec:
     metadata:
       labels:
         app: go-web-app
-    spec: null
-containers:
-  - name: go-web-app
-    image: '{{ .Values.image.repository }}:{{ .Values.image.tag }}'
-    ports:
-      - containerPort: 8080
-    resources:
-      requests:
-        memory: 64Mi
-        cpu: 100m
-      limits:
-        memory: 128Mi
-        cpu: 500m
+    spec:
+      containers:
+        - name: go-web-app
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 64Mi
+              cpu: 100m
+            limits:
+              memory: 128Mi
+              cpu: 500m
